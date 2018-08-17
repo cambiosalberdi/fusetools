@@ -1,0 +1,89 @@
+<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#2d4837">
+	<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
+	<ActivatingAnimation>
+		<Set navigatorRoot.Margin="0,600,0,0" />
+		<Change shadow.Color="#0004" />
+		<Change sidebarFade.Opacity="1" />
+	</ActivatingAnimation>
+
+	<DeactivatingAnimation>
+		<Set navigatorRoot.Margin="0,0,0,0" />
+	</DeactivatingAnimation>
+
+	<JavaScript>
+		module.exports = {
+	        mainPage: function() { router.goto("mainPage"); },
+	        giroPage: function() { router.goto("giroPage"); },
+	        calcPage: function() { router.goto("calcPage"); },
+	        aboutPage: function() { router.goto("aboutPage"); },
+	        servicesPage: function() { router.goto("servicesPage"); },
+	        sucursalPage: function() { router.goto("sucursalPage"); },
+	        settingPage: function() { router.goto("settingPage"); },
+	    };
+	</JavaScript>
+
+	<StackPanel ItemSpacing="10" Margin="20,40,20,20">
+		<Panel Height="40" Clicked="{mainPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf0ce;</Text> 
+			<Text Value="Tableros" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+
+		<Panel Height="40" Clicked="{giroPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf155;</Text> 
+			<Text Value="Giros Nacionales" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+
+		<Panel Height="40" Clicked="{calcPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf1ec;</Text> 
+			<Text Value="Calculadora" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+
+		<Panel Height="40" Clicked="{aboutPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf129;</Text> 
+			<Text Value="Nosotros" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+
+		<Panel Height="40" Clicked="{servicesPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf0ae;</Text> 
+			<Text Value="Servicios" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+
+		<Panel Height="40" Clicked="{sucursalPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf041;</Text> 
+			<Text Value="Sucursales" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+		
+		<Panel Height="40" Clicked="{settingPage}">
+			<Clicked>
+				<NavigateToggle Target="sidebar" />
+			</Clicked>
+			<Text Font="FontAwesome" Alignment="CenterLeft" FontSize="20" Color="#FFF">&#xf013;</Text> 
+			<Text Value="Configuración" Alignment="CenterLeft" Color="#fff" FontSize="20" Margin="30,0,0,0" />
+			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
+		</Panel>
+	</StackPanel>
+</Panel>

@@ -1,0 +1,10 @@
+<Panel ux:Class="setting">
+	<DockPanel>
+		<Grid Columns="4*,1*" Margin="30">
+			<Text Value="Notificaciones" FontSize="28"/>
+			<StackPanel>
+			    <Switch ux:Name="_sw" Value="{notify}" />
+			</StackPanel>
+		</Grid>
+	</DockPanel>
+</Panel>

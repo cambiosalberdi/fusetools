@@ -1,0 +1,504 @@
+<Panel ux:Class="main">	
+	<StackPanel Alignment="Top">		
+		<Panel>
+			<Grid Columns="1*,1*,1*,1*,1*,1*,1*" Height="45" Dock="Bottom" Margin="0,0,0,0">
+				<Panel Background="#15A346" ux:Name="panel_btn_asu" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0">
+					<Text ux:Name="btn_asu" Value="ASU" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page1" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_vm">
+					<Text ux:Name="btn_vm" Value="VM" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page2" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_cde">
+					<Text ux:Name="btn_cde" Value="CDE" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page3" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_sdg">
+					<Text ux:Name="btn_sdg" Value="SDG" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page4" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_slo">
+					<Text ux:Name="btn_slo" Value="SLO" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page5" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_km4">
+					<Text ux:Name="btn_km4" Value="KM4" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page6" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_enc">
+					<Text ux:Name="btn_enc" Value="ENC" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages.Active="page7" />
+					</Clicked>
+				</Panel>
+			</Grid>
+		</Panel>
+	</StackPanel>
+
+	<StackPanel Alignment="Top" Margin="0,45,0,0">
+		<Panel>
+			<PageControl ux:Name="pages">
+				<Page ux:Name="page1">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="ASUNCIÓN" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardASU" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.asuncion}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardASUOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 07:45 horas a 17:00 horas de Lunes a Viernes, 07:45 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (021) 447.003 / (021) 447.004
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>    
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_asu" Factor="1.5" />
+						<Change panel_btn_asu.Background="#2d4837" />							
+					</ActivatingAnimation>
+					<WhileTrue Value="{asuCalcValidation}">
+				        <Set boardASU.Visibility="Visible" />
+				        <Set boardASUOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{asuCalcValidation}">
+				        <Set boardASU.Visibility="Hidden" />
+				        <Set boardASUOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page2">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="VILLA MORRA" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardVM" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.villamorra}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardVMOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (021) 609.905 / (021) 609.906
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel> 
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_vm" Factor="1.5" />
+						<Change panel_btn_vm.Background="#2d4837" />
+					</ActivatingAnimation>					
+					<WhileTrue Value="{vmCalcValidation}">
+				        <Set boardVM.Visibility="Visible" />
+				        <Set boardVMOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{vmCalcValidation}">
+				        <Set boardVM.Visibility="Hidden" />
+				        <Set boardVMOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page3">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="CIUDAD DEL ESTE" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardCDE" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.cde}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardCDEOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 07:00 horas a 16:00 horas de Lunes a Viernes, 07:00 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (061) 500.135 / (061) 500.417
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_cde" Factor="1.5" />
+						<Change panel_btn_cde.Background="#2d4837" />
+					</ActivatingAnimation>
+					<WhileTrue Value="{cdeCalcValidation}">
+				        <Set boardCDE.Visibility="Visible" />
+				        <Set boardCDEOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{cdeCalcValidation}">
+				        <Set boardCDE.Visibility="Hidden" />
+				        <Set boardCDEOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page4">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="SALTO DEL GUAIRÁ" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardSDG" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.salto}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardSDGOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 08:00 horas a 16:00 horas de Lunes a Viernes, 07:30 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (046) 243.158 / (046) 243.159
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_sdg" Factor="1.5" />
+						<Change panel_btn_sdg.Background="#2d4837" />
+					</ActivatingAnimation>
+					<WhileTrue Value="{sdgCalcValidation}">
+				        <Set boardSDG.Visibility="Visible" />
+				        <Set boardSDGOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{sdgCalcValidation}">
+				        <Set boardSDG.Visibility="Hidden" />
+				        <Set boardSDGOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page5">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="SAN LORENZO" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardSLO" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.sanlo}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardSLOOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (021) 571.215 / (021) 571.216
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_slo" Factor="1.5" />
+						<Change panel_btn_slo.Background="#2d4837" />
+					</ActivatingAnimation>
+					<WhileTrue Value="{sloCalcValidation}">
+				        <Set boardSLO.Visibility="Visible" />
+				        <Set boardSLOOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{sloCalcValidation}">
+				        <Set boardSLO.Visibility="Hidden" />
+				        <Set boardSLOOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page6">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="CIUDAD DEL ESTE - KM4" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardKM4" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.cde2}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardKM4Offline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (061) 571.535 / (061) 571.536
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_km4" Factor="1.5" />
+						<Change panel_btn_km4.Background="#2d4837" />
+					</ActivatingAnimation>
+					<WhileTrue Value="{km4CalcValidation}">
+				        <Set boardKM4.Visibility="Visible" />
+				        <Set boardKM4Offline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{km4CalcValidation}">
+				        <Set boardKM4.Visibility="Hidden" />
+				        <Set boardKM4Offline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+
+				<Page ux:Name="page7">
+					<Panel Margin="5, 10, 5, 0" Padding="10" Background="#15A346" Alignment="TopCenter" Width="100%">
+						<Text Value="ENCARNACIÓN" Alignment="TopCenter" FontSize="18" Color="#FFFFFF" />	
+					</Panel>
+					<Panel Padding="5,60,5,0">
+						<ScrollView>
+							<StackPanel>
+					            <Grid Columns="1*,4*,2*,2*" ux:Name="boardENC" Visibility="Visible">
+					            	<Panel ColumnSpan="2" Margin="1,1,1,10" Background="#eee" Height="30">
+					                	<Text Value="Moneda" Color="#000" Margin="8" />	
+				                	</Panel>
+				                	<Panel Margin="0,1,1,10" Background="#eee" Height="30">
+				                		<Text Value="Compra" Color="#000" Margin="8" />
+				                	</Panel>
+									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
+										<Text Value="Venta" Color="#000" Margin="8" />
+									</Panel>
+					                <Each Items="{data.enc}">
+					                	<Panel Margin="3">
+					                		<Image File="{img}" />				                		
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{moneda}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+					                	<Panel Margin="3">
+					                		<Text Value="{compra}" />
+					                		<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+					                	</Panel>
+										<Panel Margin="3">
+											<Text Value="{venta}" />
+											<Rectangle Fill="#eee" Height="1px" SnapToPixels="true" Margin="0,24,0,0" />
+										</Panel>
+									</Each>
+					            </Grid>
+					            <Text ux:Name="boardENCOffline" Margin="5" Color="#999999" TextAlignment="Center" Visibility="Hidden">Servicio offline, en breve regresamos.</Text>
+					            <Panel Margin="0">
+					            	<Rectangle Layer="Background">
+				                        <Stroke Width="1" Brush="#ddd" />
+				                    </Rectangle>
+				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
+				            			Horario de Atención: 07:45 horas a 17:00 horas de Lunes a Viernes, 07:30 horas a 12:00 horas Sábados
+				            		</Text>
+				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Teléfonos: (071) 205.154 / (071) 205.120
+					            	</Text>
+					            </Panel>				            	
+					        </StackPanel>
+				        </ScrollView>
+					</Panel>
+					<ActivatingAnimation>
+						<Scale Target="btn_enc" Factor="1.5" />
+						<Change panel_btn_enc.Background="#2d4837" />
+					</ActivatingAnimation>
+					<WhileTrue Value="{encCalcValidation}">
+				        <Set boardENC.Visibility="Visible" />
+				        <Set boardENCOffline.Visibility="Hidden" />
+				    </WhileTrue>
+				    <WhileFalse Value="{encCalcValidation}">
+				        <Set boardENC.Visibility="Hidden" />
+				        <Set boardENCOffline.Visibility="Visible" />
+				    </WhileFalse>
+				</Page>
+			</PageControl>
+		</Panel>
+	</StackPanel>	
+</Panel>

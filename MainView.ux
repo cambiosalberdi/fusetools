@@ -1,0 +1,58 @@
+<App>	
+	<iOS.StatusBarConfig Style="Light"/>
+	<Router ux:Name="router" />
+
+	<DockPanel>
+		<Font File="assets/fontawesome-webfont.ttf" ux:Global="FontAwesome" />
+		<JavaScript File="MainView.js" />
+
+		<EdgeNavigator>
+			<ux:Include File="sidebar.ux" />		
+			<DockPanel Color="#FFFFFF">
+				<Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#21272E" Opacity="0" HitTestMode="None" />
+				<StackPanel Dock="Top" Color="#2d4837">
+					<Shadow Size="3" Distance="1" />
+					<StatusBarBackground />
+					<Panel Height="56">
+						<Hamburger Alignment="Left">
+							<Clicked>
+								<NavigateToggle Target="sidebar" />
+							</Clicked>
+						</Hamburger>
+						<Image File="Assets/logo.png" Alignment="Center" Padding="10"/>
+					</Panel>
+				</StackPanel>
+
+				<Navigator DefaultPath="mainPage" ux:Name="navigatorRoot" >
+					<Page ux:Template="mainPage"><main/></Page>
+					<Page ux:Template="giroPage"><giro/></Page>
+					<Page ux:Template="calcPage"><calc/></Page>
+					<Page ux:Template="aboutPage"><about/></Page>
+					<Page ux:Template="servicesPage"><services/></Page>
+					<Page ux:Template="sucursalPage"><sucursal/></Page>
+					<Page ux:Template="settingPage"><setting/></Page>
+				</Navigator>
+			</DockPanel>		
+		</EdgeNavigator>
+
+		<Image File="Assets/dolar.png" Visibility="Hidden" />
+		<Image File="Assets/dolar_peso.jpg" Visibility="Hidden" />
+		<Image File="Assets/dolar_real.jpg" Visibility="Hidden" />
+		<Image File="Assets/euro.png" Visibility="Hidden" />
+		<Image File="Assets/euro_dolar.jpg" Visibility="Hidden" />
+		<Image File="Assets/guarani.png" Visibility="Hidden" />
+		<Image File="Assets/peso.png" Visibility="Hidden" />
+		<Image File="Assets/real.png" Visibility="Hidden" />
+	</DockPanel>
+
+	<OnBackButton>
+		<Set b1.Text="BACK!" />
+		<HomeScreen Type="CallIntent" />
+	</OnBackButton>
+	<Button Text="Arne" ux:Name="b1">
+		<Clicked>
+			<DebugAction Message="Button pressed" />
+			<Set b1.Text="Clicked" />
+		</Clicked>
+	</Button>
+</App>

@@ -1,0 +1,65 @@
+{
+  "Title": "Cambios Alberdi S.A.",
+  "Icon" : "icon.png",
+  "Android": {
+    "PreviewPackage": "com.cambiosalberdi.cambiosalberdi",
+    "VersionName": "4.0",
+    "VersionCode": 5,    
+    "Icons": {
+          "Icons": {
+            "LDPI": "$(Icon)",
+            "MDPI": "$(Icon)",
+            "HDPI": "$(Icon)",
+            "XHDPI": "$(Icon)",
+            "XXHDPI": "$(Icon)",
+            "XXXHDPI": "$(Icon)"
+        }
+      },
+      "Key": {
+            "Alias": "Imarkine",
+            "AliasPassword": "123456",
+            "Store": "release.keystore",
+            "StorePassword": "123456"
+        }
+  },
+  "iOS": {
+    "BundleDevelopmentTeam":"4TUFZQ77DW",
+    "BundleIdentifier": "com.cambiosalberdi.cambiosalberdi",   
+    "BundleVersion": "7.0",
+    "Icons": {
+            "iPhone_29_2x": "Icon-iPhone-29@2x.png",
+            "iPhone_29_3x": "Icon-iPhone-29@3x.png",
+            "iPhone_40_2x": "Icon-iPhone-40@2x.png",
+            "iPhone_40_3x": "Icon-iPhone-40@3x.png",
+            "iPhone_60_2x": "Icon-iPhone-60@2x.png",
+            "iPhone_60_3x": "Icon-iPhone-60@3x.png",
+            "iPad_29_1x": "Icon-iPad-29@1x.png",
+            "iPad_29_2x": "Icon-iPad-29@2x.png",
+            "iPad_40_1x": "Icon-iPad-40@1x.png",
+            "iPad_40_2x": "Icon-iPad-40@2x.png",
+            "iPad_76_1x": "Icon-iPad-76@1x.png",
+            "iPad_76_2x": "Icon-iPad-76@2x.png"
+        },
+    "LaunchImages": {
+            "iPhone_Portrait_2x": "iPhone_Portrait_2x.png",
+            "iPhone_Portrait_R4": "iPhone_Portrait_R4.png",
+            "iPhone_Portrait_R47": "iPhone_Portrait_R47.png",
+            "iPhone_Portrait_R55": "iPhone_Portrait_R55.png",
+            "iPhone_Landscape_R55": "iPhone_Landscape_R55.png",
+            "iPad_Portrait_1x": "iPad_Portrait_1x.png",
+            "iPad_Portrait_2x": "iPad_Portrait_2x.png",
+            "iPad_Landscape_1x": "iPad_Landscape_1x.png",
+            "iPad_Landscape_2x": "iPad_Landscape_2x.png"
+        }
+  },
+  "RootNamespace":"",
+  "Packages": [
+    "Fuse",
+    "Fuse.LocalNotifications",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*",
+    "HomeScreen.uno",
+  ]
+}

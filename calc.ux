@@ -1,0 +1,958 @@
+<Panel ux:Class="calc">
+	<StackPanel Alignment="Top">		
+		<Panel>
+			<Grid Columns="1*,1*,1*,1*,1*,1*,1*" Height="45" Dock="Bottom" Margin="0,0,0,0">
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_asu">
+					<Text ux:Name="btn_calc_asu" Value="ASU" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc1" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_vm">
+					<Text ux:Name="btn_calc_vm" Value="VM" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc2" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_cde">
+					<Text ux:Name="btn_calc_cde" Value="CDE" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc3" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_sdg">
+					<Text ux:Name="btn_calc_sdg" Value="SDG" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc4" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_slo">
+					<Text ux:Name="btn_calc_slo" Value="SLO" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc5" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_km4">
+					<Text ux:Name="btn_calc_km4" Value="KM4" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc6" />
+					</Clicked>
+				</Panel>
+				<Panel Background="#15A346" ux:Name="panel_btn_calc_enc">
+					<Text ux:Name="btn_calc_enc" Value="ENC" TextColor="#FFFFFF" Alignment="Center" />
+					<Clicked>
+						<Set pages_calc.Active="page_calc7" />
+					</Clicked>
+				</Panel>
+			</Grid>
+		</Panel>
+		<WhileKeyboardVisible>
+		    <Move RelativeTo="Keyboard" Y="-10" />
+		</WhileKeyboardVisible>
+	</StackPanel>
+
+	<StackPanel Alignment="Top" Margin="0,45,0,0">
+		<Panel>
+			<PageControl ux:Name="pages_calc">
+				<Page ux:Name="page_calc1">
+					<DockPanel ux:Name="asuDockPanel">
+						<Panel Margin="20">
+							<Panel ux:Class="asuOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+							    <string ux:Property="Label"/>
+							    <string ux:Property="Value"/>
+
+							    <Selectable Value="{ReadProperty this.Value}"/>
+							    <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+							    <WhileSelected>
+							        <Change this.Color="#2d4837"/>
+							    </WhileSelected>
+							    <Tapped>
+							        <ToggleSelection/>
+							    </Tapped>
+							</Panel>
+
+							<StackPanel>
+							    <Selection Value="{asuOptionSel}" MaxCount="1" MinCount="1" />
+						    	<Grid Columns="1*,1*">
+							    	<asuOptionItem Label="Tengo" Value="compra"/>
+							    	<asuOptionItem Label="Quiero" Value="venta"/>
+								</Grid>
+							</StackPanel>
+						</Panel>
+
+						<Panel>
+							<Panel ux:Class="asuOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+								<string ux:Property="Moneda"/>
+								
+								<Selectable Value="{ReadProperty this.Moneda}"/>
+								<Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+								</Rectangle>
+								
+								<WhileSelected>
+									<Change optionSelected.Color="#2d4837" Duration="0.2"/>		
+								</WhileSelected>
+								<Tapped>
+									<ToggleSelection/>
+								</Tapped>
+							</Panel>
+							
+							<DockPanel>
+								<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+									<Selection Value="{asuMonedaSel}" MinCount="1" MaxCount="1"/>
+									<asuOptionMoneda Moneda="guarani">
+										<Grid Columns="1*,4*,4*">
+											<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+											<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+											<TextInput ValueChanged="{asuChangeInput}" TextColor="#fff" Value="{asuGuarani}" InputHint="Number" Padding="5">
+												<Rectangle Layer="Background" ux:Name="asubi1" Opacity="0">
+							                        <Stroke Width="1" Brush="#fff" />
+							                    </Rectangle>
+											</TextInput>
+										</Grid>
+										<WhileSelected>
+											<Change asubi1.Opacity="1"/>		
+										</WhileSelected>
+									</asuOptionMoneda>
+									<asuOptionMoneda Moneda="dolar">
+										<Grid Columns="1*,4*,4*">
+											<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+											<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+											<TextInput ValueChanged="{asuChangeInput}" TextColor="#fff" Value="{asuDolar}" InputHint="Number" Padding="5" >
+												<Rectangle Layer="Background" ux:Name="asubi2" Opacity="0">
+							                        <Stroke Width="1" Brush="#fff" />
+							                    </Rectangle>
+											</TextInput>
+										</Grid>
+										<WhileSelected>
+											<Change asubi2.Opacity="1"/>		
+										</WhileSelected>
+									</asuOptionMoneda>
+									<asuOptionMoneda Moneda="real">
+										<Grid Columns="1*,4*,4*">
+											<Image File="Assets/real.png" Margin="0,5,10,5" />
+											<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+											<TextInput ValueChanged="{asuChangeInput}" TextColor="#fff" Value="{asuReal}" InputHint="Number" Padding="5">
+												<Rectangle Layer="Background" ux:Name="asubi3" Opacity="0">
+							                        <Stroke Width="1" Brush="#fff" />
+							                    </Rectangle>
+											</TextInput>
+										</Grid>
+										<WhileSelected>
+											<Change asubi3.Opacity="1"/>		
+										</WhileSelected>
+									</asuOptionMoneda>
+									<asuOptionMoneda Moneda="euro">
+										<Grid Columns="1*,4*,4*">
+											<Image File="Assets/euro.png" Margin="0,5,10,5" />
+											<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+											<TextInput ValueChanged="{asuChangeInput}" TextColor="#fff" Value="{asuEuro}" InputHint="Number" Padding="5">
+												<Rectangle Layer="Background" ux:Name="asubi4" Opacity="0">
+							                        <Stroke Width="1" Brush="#fff" />
+							                    </Rectangle>
+											</TextInput>
+										</Grid>
+										<WhileSelected>
+											<Change asubi4.Opacity="1"/>		
+										</WhileSelected>
+									</asuOptionMoneda>
+									<asuOptionMoneda Moneda="peso">
+										<Grid Columns="1*,4*,4*">
+											<Image File="Assets/peso.png" Margin="0,5,10,5" />
+											<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+											<TextInput ValueChanged="{asuChangeInput}" TextColor="#fff" Value="{asuPeso}" InputHint="Number" Padding="5">
+												<Rectangle Layer="Background" ux:Name="asubi5" Opacity="0">
+							                        <Stroke Width="1" Brush="#fff" />
+							                    </Rectangle>
+											</TextInput>
+										</Grid>
+										<WhileSelected>
+											<Change asubi5.Opacity="1"/>		
+										</WhileSelected>
+									</asuOptionMoneda>
+								</StackPanel>
+							</DockPanel>
+						</Panel>				
+						<ActivatingAnimation>
+							<Scale Target="btn_calc_asu" Factor="1.5" />
+							<Change panel_btn_calc_asu.Background="#2d4837" />
+						</ActivatingAnimation>	
+					</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc2">
+					<DockPanel ux:Name="vmDockPanel">
+						<Panel Margin="20">
+							<Panel ux:Class="vmOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+							    <string ux:Property="Label"/>
+							    <string ux:Property="Value"/>
+
+							    <Selectable Value="{ReadProperty this.Value}"/>
+							    <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+							    <WhileSelected>
+							        <Change this.Color="#2d4837"/>
+							    </WhileSelected>
+							    <Tapped>
+							        <ToggleSelection/>
+							    </Tapped>
+							</Panel>
+
+							<StackPanel>
+							    <Selection Value="{vmOptionSel}" MaxCount="1" MinCount="1" />
+						    	<Grid Columns="1*,1*">
+							    	<vmOptionItem Label="Tengo" Value="compra"/>
+							    	<vmOptionItem Label="Quiero" Value="venta"/>
+								</Grid>
+							</StackPanel>
+						</Panel>
+
+						<Panel>
+							<Panel ux:Class="vmOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+								<string ux:Property="Moneda"/>
+								
+								<Selectable Value="{ReadProperty this.Moneda}"/>
+								<Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+								</Rectangle>
+								
+								<WhileSelected>
+									<Change optionSelected.Color="#2d4837" Duration="0.2"/>
+								</WhileSelected>
+								<Tapped>
+									<ToggleSelection/>
+								</Tapped>
+							</Panel>
+							
+							<DockPanel>
+								<ScrollView>
+									<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+										<Selection Value="{vmMonedaSel}" MinCount="1" MaxCount="1"/>
+										<vmOptionMoneda Moneda="guarani">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+												<TextInput ValueChanged="{vmChangeInput}" TextColor="#fff" Value="{vmGuarani}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="vmbi1" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change vmbi1.Opacity="1"/>		
+											</WhileSelected>
+										</vmOptionMoneda>
+										<vmOptionMoneda Moneda="dolar">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+												<TextInput ValueChanged="{vmChangeInput}" TextColor="#fff" Value="{vmDolar}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="vmbi2" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change vmbi2.Opacity="1"/>		
+											</WhileSelected>
+										</vmOptionMoneda>
+										<vmOptionMoneda Moneda="real">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/real.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+												<TextInput ValueChanged="{vmChangeInput}" TextColor="#fff" Value="{vmReal}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="vmbi3" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change vmbi3.Opacity="1"/>		
+											</WhileSelected>
+										</vmOptionMoneda>
+										<vmOptionMoneda Moneda="euro">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/euro.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+												<TextInput ValueChanged="{vmChangeInput}" TextColor="#fff" Value="{vmEuro}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="vmbi4" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change vmbi4.Opacity="1"/>		
+											</WhileSelected>
+										</vmOptionMoneda>
+										<vmOptionMoneda Moneda="peso">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/peso.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+												<TextInput ValueChanged="{vmChangeInput}" TextColor="#fff" Value="{vmPeso}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="vmbi5" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change vmbi5.Opacity="1"/>		
+											</WhileSelected>
+										</vmOptionMoneda>
+									</StackPanel>
+								</ScrollView>
+							</DockPanel>
+						</Panel>
+						<ActivatingAnimation>
+							<Scale Target="btn_calc_vm" Factor="1.5" />
+							<Change panel_btn_calc_vm.Background="#2d4837" />
+						</ActivatingAnimation>
+					</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc3">
+					<DockPanel ux:Name="cdeDockPanel">
+						<Panel Margin="20">
+							<Panel ux:Class="cdeOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+							    <string ux:Property="Label"/>
+							    <string ux:Property="Value"/>
+
+							    <Selectable Value="{ReadProperty this.Value}"/>
+							    <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+							    <WhileSelected>
+							        <Change this.Color="#2d4837"/>
+							    </WhileSelected>
+							    <Tapped>
+							        <ToggleSelection/>
+							    </Tapped>
+							</Panel>
+
+							<StackPanel>
+							    <Selection Value="{cdeOptionSel}" MaxCount="1" MinCount="1" />
+						    	<Grid Columns="1*,1*">
+							    	<cdeOptionItem Label="Tengo" Value="compra"/>
+							    	<cdeOptionItem Label="Quiero" Value="venta"/>
+								</Grid>
+							</StackPanel>
+						</Panel>
+
+						<Panel>
+							<Panel ux:Class="cdeOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+								<string ux:Property="Moneda"/>
+								
+								<Selectable Value="{ReadProperty this.Moneda}"/>
+								<Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+								</Rectangle>
+								
+								<WhileSelected>
+									<Change optionSelected.Color="#2d4837" Duration="0.2"/>
+								</WhileSelected>
+								<Tapped>
+									<ToggleSelection/>
+								</Tapped>
+							</Panel>
+							
+							<DockPanel>
+								<ScrollView>
+									<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+										<Selection Value="{cdeMonedaSel}" MinCount="1" MaxCount="1"/>
+										<cdeOptionMoneda Moneda="guarani">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+												<TextInput ValueChanged="{cdeChangeInput}" TextColor="#fff" Value="{cdeGuarani}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="cdebi1" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change cdebi1.Opacity="1"/>		
+											</WhileSelected>
+										</cdeOptionMoneda>
+										<cdeOptionMoneda Moneda="dolar">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+												<TextInput ValueChanged="{cdeChangeInput}" TextColor="#fff" Value="{cdeDolar}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="cdebi2" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change cdebi2.Opacity="1"/>		
+											</WhileSelected>
+										</cdeOptionMoneda>
+										<cdeOptionMoneda Moneda="real">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/real.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+												<TextInput ValueChanged="{cdeChangeInput}" TextColor="#fff" Value="{cdeReal}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="cdebi3" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change cdebi3.Opacity="1"/>		
+											</WhileSelected>
+										</cdeOptionMoneda>
+										<cdeOptionMoneda Moneda="euro">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/euro.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+												<TextInput ValueChanged="{cdeChangeInput}" TextColor="#fff" Value="{cdeEuro}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="cdebi4" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change cdebi4.Opacity="1"/>		
+											</WhileSelected>
+										</cdeOptionMoneda>
+										<cdeOptionMoneda Moneda="peso">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/peso.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+												<TextInput ValueChanged="{cdeChangeInput}" TextColor="#fff" Value="{cdePeso}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="cdebi5" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change cdebi5.Opacity="1"/>		
+											</WhileSelected>
+										</cdeOptionMoneda>
+									</StackPanel>
+								</ScrollView>
+							</DockPanel>
+						</Panel>
+						<ActivatingAnimation>
+							<Scale Target="btn_calc_cde" Factor="1.5" />
+							<Change panel_btn_calc_cde.Background="#2d4837" />
+						</ActivatingAnimation>
+					</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc4">
+					<DockPanel ux:Name="sdgDockPanel">
+						<Panel Margin="20">
+							<Panel ux:Class="sdgOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+							    <string ux:Property="Label"/>
+							    <string ux:Property="Value"/>
+
+							    <Selectable Value="{ReadProperty this.Value}"/>
+							    <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+							    <WhileSelected>
+							        <Change this.Color="#2d4837"/>
+							    </WhileSelected>
+							    <Tapped>
+							        <ToggleSelection/>
+							    </Tapped>
+							</Panel>
+
+							<StackPanel>
+							    <Selection Value="{sdgOptionSel}" MaxCount="1" MinCount="1" />
+						    	<Grid Columns="1*,1*">
+							    	<sdgOptionItem Label="Tengo" Value="compra"/>
+							    	<sdgOptionItem Label="Quiero" Value="venta"/>
+								</Grid>
+							</StackPanel>
+						</Panel>
+
+						<Panel>
+							<Panel ux:Class="sdgOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+								<string ux:Property="Moneda"/>
+								
+								<Selectable Value="{ReadProperty this.Moneda}"/>
+								<Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+								</Rectangle>
+								
+								<WhileSelected>
+									<Change optionSelected.Color="#2d4837" Duration="0.2"/>
+								</WhileSelected>
+								<Tapped>
+									<ToggleSelection/>
+								</Tapped>
+							</Panel>
+							
+							<DockPanel>
+								<ScrollView>
+									<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+										<Selection Value="{sdgMonedaSel}" MinCount="1" MaxCount="1"/>
+										<sdgOptionMoneda Moneda="guarani">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+												<TextInput ValueChanged="{sdgChangeInput}" TextColor="#fff" Value="{sdgGuarani}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="sdgbi1" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change sdgbi1.Opacity="1"/>		
+											</WhileSelected>
+										</sdgOptionMoneda>
+										<sdgOptionMoneda Moneda="dolar">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+												<TextInput ValueChanged="{sdgChangeInput}" TextColor="#fff" Value="{sdgDolar}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="sdgbi2" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change sdgbi2.Opacity="1"/>		
+											</WhileSelected>
+										</sdgOptionMoneda>
+										<sdgOptionMoneda Moneda="real">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/real.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+												<TextInput ValueChanged="{sdgChangeInput}" TextColor="#fff" Value="{sdgReal}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="sdgbi3" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change sdgbi3.Opacity="1"/>		
+											</WhileSelected>
+										</sdgOptionMoneda>
+										<sdgOptionMoneda Moneda="euro">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/euro.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+												<TextInput ValueChanged="{sdgChangeInput}" TextColor="#fff" Value="{sdgEuro}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="sdgbi4" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change sdgbi4.Opacity="1"/>		
+											</WhileSelected>
+										</sdgOptionMoneda>
+										<sdgOptionMoneda Moneda="peso">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/peso.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+												<TextInput ValueChanged="{sdgChangeInput}" TextColor="#fff" Value="{sdgPeso}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="sdgbi5" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change sdgbi5.Opacity="1"/>		
+											</WhileSelected>
+										</sdgOptionMoneda>
+									</StackPanel>
+								</ScrollView>
+							</DockPanel>
+						</Panel>					
+						<ActivatingAnimation>
+							<Scale Target="btn_calc_sdg" Factor="1.5" />
+							<Change panel_btn_calc_sdg.Background="#2d4837" />
+						</ActivatingAnimation>
+					</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc5">
+					<DockPanel ux:Name="sloDockPanel">
+						<Panel Margin="20">
+							<Panel ux:Class="sloOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+							    <string ux:Property="Label"/>
+							    <string ux:Property="Value"/>
+
+							    <Selectable Value="{ReadProperty this.Value}"/>
+							    <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+							    <WhileSelected>
+							        <Change this.Color="#2d4837"/>
+							    </WhileSelected>
+							    <Tapped>
+							        <ToggleSelection/>
+							    </Tapped>
+							</Panel>
+
+							<StackPanel>
+							    <Selection Value="{sloOptionSel}" MaxCount="1" MinCount="1" />
+						    	<Grid Columns="1*,1*">
+							    	<sloOptionItem Label="Tengo" Value="compra"/>
+							    	<sloOptionItem Label="Quiero" Value="venta"/>
+								</Grid>
+							</StackPanel>
+						</Panel>
+
+						<Panel>
+							<Panel ux:Class="sloOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+								<string ux:Property="Moneda"/>
+								
+								<Selectable Value="{ReadProperty this.Moneda}"/>
+								<Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+								</Rectangle>
+								
+								<WhileSelected>
+									<Change optionSelected.Color="#2d4837" Duration="0.2"/>
+								</WhileSelected>
+								<Tapped>
+									<ToggleSelection/>
+								</Tapped>
+							</Panel>
+							
+							<DockPanel>
+								<ScrollView>
+									<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+										<Selection Value="{sloMonedaSel}" MinCount="1" MaxCount="1"/>
+										<sloOptionMoneda Moneda="guarani">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+												<TextInput ValueChanged="{sloChangeInput}" TextColor="#fff" Value="{sloGuarani}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="slobi1" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change slobi1.Opacity="1"/>		
+											</WhileSelected>
+										</sloOptionMoneda>
+										<sloOptionMoneda Moneda="dolar">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+												<TextInput ValueChanged="{sloChangeInput}" TextColor="#fff" Value="{sloDolar}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="slobi2" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change slobi2.Opacity="1"/>		
+											</WhileSelected>
+										</sloOptionMoneda>
+										<sloOptionMoneda Moneda="real">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/real.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+												<TextInput ValueChanged="{sloChangeInput}" TextColor="#fff" Value="{sloReal}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="slobi3" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change slobi3.Opacity="1"/>		
+											</WhileSelected>
+										</sloOptionMoneda>
+										<sloOptionMoneda Moneda="euro">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/euro.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+												<TextInput ValueChanged="{sloChangeInput}" TextColor="#fff" Value="{sloEuro}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="slobi4" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change slobi4.Opacity="1"/>		
+											</WhileSelected>
+										</sloOptionMoneda>
+										<sloOptionMoneda Moneda="peso">
+											<Grid Columns="1*,4*,4*">
+												<Image File="Assets/peso.png" Margin="0,5,10,5" />
+												<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+												<TextInput ValueChanged="{sloChangeInput}" TextColor="#fff" Value="{sloPeso}" InputHint="Number" Padding="5">
+													<Rectangle Layer="Background" ux:Name="slobi5" Opacity="0">
+								                        <Stroke Width="1" Brush="#fff" />
+								                    </Rectangle>
+												</TextInput>
+											</Grid>
+											<WhileSelected>
+												<Change slobi5.Opacity="1"/>		
+											</WhileSelected>
+										</sloOptionMoneda>
+									</StackPanel>
+								</ScrollView>
+							</DockPanel>
+						</Panel>					
+						<ActivatingAnimation>
+							<Scale Target="btn_calc_slo" Factor="1.5" />
+							<Change panel_btn_calc_slo.Background="#2d4837" />
+						</ActivatingAnimation>
+					</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc6">
+    				<DockPanel ux:Name="km4DockPanel">
+				        <Panel Margin="20">
+				            <Panel ux:Class="km4OptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+				                <string ux:Property="Label"/>
+				                <string ux:Property="Value"/>
+
+				                <Selectable Value="{ReadProperty this.Value}"/>
+				                <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+				                <WhileSelected>
+				                    <Change this.Color="#2d4837"/>
+				                </WhileSelected>
+				                <Tapped>
+				                    <ToggleSelection/>
+				                </Tapped>
+				            </Panel>
+
+				            <StackPanel>
+				                <Selection Value="{km4OptionSel}" MaxCount="1" MinCount="1" />
+				                <Grid Columns="1*,1*">
+				                    <km4OptionItem Label="Tengo" Value="compra"/>
+				                    <km4OptionItem Label="Quiero" Value="venta"/>
+				                </Grid>
+				            </StackPanel>
+				        </Panel>
+
+        				<Panel>
+				            <Panel ux:Class="km4OptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+				                <string ux:Property="Moneda"/>
+				                
+				                <Selectable Value="{ReadProperty this.Moneda}"/>
+				                <Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected">
+				                </Rectangle>
+				                
+				                <WhileSelected>
+				                    <Change optionSelected.Color="#2d4837" Duration="0.2"/>
+				                </WhileSelected>
+				                <Tapped>
+				                    <ToggleSelection/>
+				                </Tapped>
+				            </Panel>
+            				<DockPanel>
+                				<ScrollView>
+                    				<StackPanel ItemSpacing="5" Padding="10,100,10,10">
+                       					<Selection Value="{km4MonedaSel}" MinCount="1" MaxCount="1"/>
+		                        		<km4OptionMoneda Moneda="guarani">
+		                            		<Grid Columns="1*,4*,4*">
+		                                		<Image File="Assets/guarani.png" Margin="0,5,10,5" />
+		                                		<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+		                                		<TextInput ValueChanged="{km4ChangeInput}" TextColor="#fff" Value="{km4Guarani}" InputHint="Number" Padding="5">
+		                                    		<Rectangle Layer="Background" ux:Name="km4bi1" Opacity="0">
+		                                        		<Stroke Width="1" Brush="#fff" />
+		                                    		</Rectangle>
+		                                		</TextInput>
+		                            		</Grid>
+		                            		<WhileSelected>
+		                                		<Change km4bi1.Opacity="1"/>		
+		                            		</WhileSelected>
+		                        		</km4OptionMoneda>
+                    					<km4OptionMoneda Moneda="dolar">
+                        					<Grid Columns="1*,4*,4*">
+                            					<Image File="Assets/dolar.png" Margin="0,5,10,5" />
+                            					<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+                            					<TextInput ValueChanged="{km4ChangeInput}" TextColor="#fff" Value="{km4Dolar}" InputHint="Number" Padding="5">
+                                					<Rectangle Layer="Background" ux:Name="km4bi2" Opacity="0">
+                                    					<Stroke Width="1" Brush="#fff" />
+                                					</Rectangle>
+                            					</TextInput>
+                        					</Grid>
+                        					<WhileSelected>
+                            					<Change km4bi2.Opacity="1"/>		
+                        					</WhileSelected>
+                    					</km4OptionMoneda>
+                    					<km4OptionMoneda Moneda="real">
+                        					<Grid Columns="1*,4*,4*">
+                            					<Image File="Assets/real.png" Margin="0,5,10,5" />
+                            					<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+                            					<TextInput ValueChanged="{km4ChangeInput}" TextColor="#fff" Value="{km4Real}" InputHint="Number" Padding="5">
+                                					<Rectangle Layer="Background" ux:Name="km4bi3" Opacity="0">
+                                   	 					<Stroke Width="1" Brush="#fff" />
+                                					</Rectangle>
+                            					</TextInput>
+                        					</Grid>
+                        					<WhileSelected>
+                            					<Change km4bi3.Opacity="1"/>		
+                        					</WhileSelected>
+                    					</km4OptionMoneda>
+                    					<km4OptionMoneda Moneda="euro">
+                        					<Grid Columns="1*,4*,4*">
+                            					<Image File="Assets/euro.png" Margin="0,5,10,5" />
+                            					<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+                            					<TextInput ValueChanged="{km4ChangeInput}" TextColor="#fff" Value="{km4Euro}" InputHint="Number" Padding="5">
+                                					<Rectangle Layer="Background" ux:Name="km4bi4" Opacity="0">
+                                    					<Stroke Width="1" Brush="#fff" />
+                                					</Rectangle>
+                            					</TextInput>
+                        					</Grid>
+                        					<WhileSelected>
+                            					<Change km4bi4.Opacity="1"/>		
+                        					</WhileSelected>
+                    					</km4OptionMoneda>
+                    					<km4OptionMoneda Moneda="peso">
+                        					<Grid Columns="1*,4*,4*">
+                            					<Image File="Assets/peso.png" Margin="0,5,10,5" />
+                            					<Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+                            					<TextInput ValueChanged="{km4ChangeInput}" TextColor="#fff" Value="{km4Peso}" InputHint="Number" Padding="5">
+                                					<Rectangle Layer="Background" ux:Name="km4bi5" Opacity="0">
+                                    					<Stroke Width="1" Brush="#fff" />
+                                					</Rectangle>
+                            					</TextInput>
+                        					</Grid>
+                        					<WhileSelected>
+                            					<Change km4bi5.Opacity="1"/>		
+                        					</WhileSelected>
+                    					</km4OptionMoneda>
+                    				</StackPanel>
+                				</ScrollView>
+            				</DockPanel>
+        				</Panel>
+
+        				<ActivatingAnimation>
+            				<Scale Target="btn_calc_km4" Factor="1.5" />
+            				<Change panel_btn_calc_km4.Background="#2d4837" />
+        				</ActivatingAnimation>
+    				</DockPanel>
+				</Page>
+
+				<Page ux:Name="page_calc7">
+				    <DockPanel ux:Name="encDockPanel">
+				        <Panel Margin="20">
+				            <Panel ux:Class="encOptionItem" Color="#15A346" Alignment="TopCenter" Padding="30,10,30,10">
+				                <string ux:Property="Label"/>
+				                <string ux:Property="Value"/>
+
+				                <Selectable Value="{ReadProperty this.Value}"/>
+				                <Text Value="{ReadProperty this.Label}" Color="#fff"/>
+
+				                <WhileSelected>
+				                    <Change this.Color="#2d4837"/>
+				                </WhileSelected>
+				                <Tapped>
+				                    <ToggleSelection/>
+				                </Tapped>
+				            </Panel>
+
+				            <StackPanel>
+				                <Selection Value="{encOptionSel}" MaxCount="1" MinCount="1" />
+				                <Grid Columns="1*,1*">
+				                    <encOptionItem Label="Tengo" Value="compra"/>
+				                    <encOptionItem Label="Quiero" Value="venta"/>
+				                </Grid>
+				            </StackPanel>
+				        </Panel>
+
+					    <Panel>
+					        <Panel ux:Class="encOptionMoneda" Padding="10" HitTestMode="LocalBoundsAndChildren">
+					            <string ux:Property="Moneda"/>
+					                
+					            <Selectable Value="{ReadProperty this.Moneda}"/>
+					            <Rectangle Layer="Background" CornerRadius="5" Color="#15A346" ux:Name="optionSelected"></Rectangle>
+					                
+					            <WhileSelected>
+					                <Change optionSelected.Color="#2d4837" Duration="0.2"/>
+					            </WhileSelected>
+					            
+					            <Tapped>
+					                <ToggleSelection/>
+					            </Tapped>
+					        </Panel>
+					            
+					        <DockPanel>
+					            <ScrollView>
+					                <StackPanel ItemSpacing="5" Padding="10,100,10,10">
+					                    <Selection Value="{encMonedaSel}" MinCount="1" MaxCount="1"/>
+					                    <encOptionMoneda Moneda="guarani">
+					                        <Grid Columns="1*,4*,4*">
+					                            <Image File="Assets/guarani.png" Margin="0,5,10,5" />
+					                            <Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Guarani" />
+					                            <TextInput ValueChanged="{encChangeInput}" TextColor="#fff" Value="{encGuarani}" InputHint="Number" Padding="5">
+					                                <Rectangle Layer="Background" ux:Name="encbi1" Opacity="0">
+					                                    <Stroke Width="1" Brush="#fff" />
+					                                </Rectangle>
+					                            </TextInput>
+					                        </Grid>
+					                        <WhileSelected>
+					                            <Change encbi1.Opacity="1"/>		
+					                        </WhileSelected>
+					                    </encOptionMoneda>
+					                    <encOptionMoneda Moneda="dolar">
+					                        <Grid Columns="1*,4*,4*">
+					                            <Image File="Assets/dolar.png" Margin="0,5,10,5" />
+					                            <Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Dolar" />
+					                            <TextInput ValueChanged="{encChangeInput}" TextColor="#fff" Value="{encDolar}" InputHint="Number" Padding="5">
+					                                <Rectangle Layer="Background" ux:Name="encbi2" Opacity="0">
+					                                    <Stroke Width="1" Brush="#fff" />
+					                                </Rectangle>
+					                            </TextInput>
+					                        </Grid>
+					                        <WhileSelected>
+					                            <Change encbi2.Opacity="1"/>		
+					                        </WhileSelected>
+					                    </encOptionMoneda>
+					                    <encOptionMoneda Moneda="real">
+					                        <Grid Columns="1*,4*,4*">
+					                            <Image File="Assets/real.png" Margin="0,5,10,5" />
+					                            <Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Real" />
+					                            <TextInput ValueChanged="{encChangeInput}" TextColor="#fff" Value="{encReal}" InputHint="Number" Padding="5">
+					                                <Rectangle Layer="Background" ux:Name="encbi3" Opacity="0">
+					                                    <Stroke Width="1" Brush="#fff" />
+					                                </Rectangle>
+					                            </TextInput>
+					                        </Grid>
+					                        <WhileSelected>
+					                            <Change encbi3.Opacity="1"/>		
+					                        </WhileSelected>
+					                    </encOptionMoneda>
+					                    <encOptionMoneda Moneda="euro">
+					                        <Grid Columns="1*,4*,4*">
+					                            <Image File="Assets/euro.png" Margin="0,5,10,5" />
+					                            <Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Euro" />
+					                            <TextInput ValueChanged="{encChangeInput}" TextColor="#fff" Value="{encEuro}" InputHint="Number" Padding="5">
+					                                <Rectangle Layer="Background" ux:Name="encbi4" Opacity="0">
+					                                    <Stroke Width="1" Brush="#fff" />
+					                                </Rectangle>
+					                            </TextInput>
+					                        </Grid>
+					                        <WhileSelected>
+					                            <Change encbi4.Opacity="1"/>		
+					                        </WhileSelected>
+					                    </encOptionMoneda>
+					                    <encOptionMoneda Moneda="peso">
+					                    	<Grid Columns="1*,4*,4*">
+					                            <Image File="Assets/peso.png" Margin="0,5,10,5" />
+					                            <Text FontSize="20" Color="#fff" Alignment="CenterLeft" Value="Peso Argentino" />
+					                            <TextInput ValueChanged="{encChangeInput}" TextColor="#fff" Value="{encPeso}" InputHint="Number" Padding="5">
+					                                <Rectangle Layer="Background" ux:Name="encbi5" Opacity="0">
+					                                    <Stroke Width="1" Brush="#fff" />
+					                                </Rectangle>
+					                            </TextInput>
+					                        </Grid>
+					                        <WhileSelected>
+					                            <Change encbi5.Opacity="1"/>		
+					                        </WhileSelected>
+					                    </encOptionMoneda>
+					                </StackPanel>
+					            </ScrollView>
+					        </DockPanel>
+					    </Panel>					
+					    
+					    <ActivatingAnimation>
+					        <Scale Target="btn_calc_enc" Factor="1.5" />
+					        <Change panel_btn_calc_enc.Background="#2d4837" />
+					    </ActivatingAnimation>
+					</DockPanel>
+				</Page>
+			</PageControl>
+		</Panel>
+
+		<WhileKeyboardVisible>
+		    <Move RelativeTo="Keyboard" Y="-0.6" />
+		</WhileKeyboardVisible>
+	</StackPanel>
+</Panel>
