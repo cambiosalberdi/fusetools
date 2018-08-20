@@ -94,8 +94,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 07:45 horas a 17:00 horas de Lunes a Viernes, 07:45 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (021) 447.003 / (021) 447.004
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (021) 447.003 / (021) 447.004
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>    
@@ -158,8 +158,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (021) 609.905 / (021) 609.906
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (021) 609.905 / (021) 609.906
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel> 
@@ -222,8 +222,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 07:00 horas a 16:00 horas de Lunes a Viernes, 07:00 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (061) 500.135 / (061) 500.417
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (061) 500.135 / (061) 500.417
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>
@@ -286,8 +286,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 08:00 horas a 16:00 horas de Lunes a Viernes, 07:30 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (046) 243.158 / (046) 243.159
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (046) 243.158 / (046) 243.159
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>
@@ -350,8 +350,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (021) 571.215 / (021) 571.216
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (021) 571.215 / (021) 571.216
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>
@@ -414,8 +414,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 08:00 horas a 17:00 horas de Lunes a Viernes, 08:00 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (061) 571.535 / (061) 571.536
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
+					            		Telf.: (061) 571.535 / (061) 571.536
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>
@@ -478,8 +478,8 @@
 				                    <Text TextAlignment="Center" Margin="20,10,20,0" TextWrapping="Wrap">
 				            			Horario de Atención: 07:45 horas a 17:00 horas de Lunes a Viernes, 07:30 horas a 12:00 horas Sábados
 				            		</Text>
-				            		<Text TextAlignment="Center" Margin="20,80,20,10" Color="#ff0000" FontSize="18" TextWrapping="Wrap">
-					            		Teléfonos: (071) 205.154 / (071) 205.120
+				            		<Text TextAlignment="Center" Margin="10,80,10,10" TextWrapping="Wrap" Color="#ff0000" FontSize="18">
+					            		Telf: (071) 205.154 / (071) 205.120
 					            	</Text>
 					            </Panel>				            	
 					        </StackPanel>

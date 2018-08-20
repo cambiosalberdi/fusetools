@@ -652,14 +652,14 @@ function loadJSON() {
 
 	fetch('http://cambiosalberdi.com/ws/getCotizaciones.json', myInit)
     .then(function(responsef) { 
-    	return responsef.json(); 
+		return responsef.json(); 
     })
     .then(function(responseObject) { 
 		initJSON(responseObject);
 	});
 
 	var timeout = setTimeout(function() {
-	    loadJSON();
+		loadJSON();
 	}, FETCH_TIMEOUT); 
 }
 
@@ -668,49 +668,56 @@ function initJSON(response) {
     	for(var i=0;i<response.asuncion.length;i++)
         	response.asuncion[i].img = 'Assets/'+response.asuncion[i].img;
     } else {
-    	response.asuncion = []; asuCalcValidation.value = false;
+    	response.asuncion 		= []; 
+    	asuCalcValidation.value = false;
     }
 
     if (response.villamorra) {
         for(var i=0;i<response.villamorra.length;i++)
             response.villamorra[i].img = 'Assets/'+response.villamorra[i].img;
     } else { 
-    	response.villamorra = []; vmCalcValidation.value = false;
+    	response.villamorra 	= []; 
+    	vmCalcValidation.value  = false;
     }
 
     if (response.cde) {
         for(var i=0;i<response.cde.length;i++)
             response.cde[i].img = 'Assets/'+response.cde[i].img;
     } else {
-    	response.cde = []; cdeCalcValidation.value = false;
+    	response.cde 			= []; 
+    	cdeCalcValidation.value = false;
     }
 
     if (response.salto) {
         for(var i=0;i<response.salto.length;i++)
            	response.salto[i].img = 'Assets/'+response.salto[i].img;
     } else {
-    	response.salto = []; sdgCalcValidation.value = false;
+    	response.salto 			= []; 
+    	sdgCalcValidation.value = false;
     }
 
     if (response.sanlo) {           	
     	for(var i=0;i<response.sanlo.length;i++)
        		response.sanlo[i].img = 'Assets/'+response.sanlo[i].img;
    	} else {
-   		response.sanlo = []; sloCalcValidation.value = false;
+   		response.sanlo 			= []; 
+   		sloCalcValidation.value = false;
    	}
 
 	if (response.cde2) {           	
     	for(var i=0;i<response.cde2.length;i++)
        		response.cde2[i].img = 'Assets/'+response.cde2[i].img;
 	} else {
-		response.cde2 = []; km4CalcValidation.value = false;
+		response.cde2 			= []; 
+		km4CalcValidation.value = false;
 	}
 	   
 	if (response.enc) {           	
     	for(var i=0;i<response.enc.length;i++)
        		response.enc[i].img = 'Assets/'+response.enc[i].img;
 	} else {
-		response.enc = []; encCalcValidation.value = false;
+		response.enc 			= [];
+		encCalcValidation.value = false;
 	}
 
     data.value 	= response;
