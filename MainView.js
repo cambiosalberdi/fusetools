@@ -78,8 +78,14 @@ var encPeso 				= Observable();
 var encReal 				= Observable();
 
 /* ASUNCION */
-asuOptionSel.onValueChanged(module, function() {asuCalcValues(0, asuOptionSel.value, asuMonedaSel.value)});
-function asuChangeInput() {asuCalcValues(0, asuOptionSel.value, asuMonedaSel.value)}
+asuOptionSel.onValueChanged(module, function() {
+	asuCalcValues(0, asuOptionSel.value, asuMonedaSel.value)
+});
+
+function asuChangeInput() {
+	asuCalcValues(0, asuOptionSel.value, asuMonedaSel.value)
+}
+
 function asuCalcValues(i, o, m) {
 	if (asuCalcValidation.value) {
 		if (m == 'guarani') {	
@@ -155,8 +161,14 @@ function asuCalcValues(i, o, m) {
 }
 
 /* VillaMorra */
-vmOptionSel.onValueChanged(module, function() {vmCalcValues(1, vmOptionSel.value, vmMonedaSel.value)});
-function vmChangeInput() {vmCalcValues(1, vmOptionSel.value, vmMonedaSel.value)}
+vmOptionSel.onValueChanged(module, function() {
+	vmCalcValues(1, vmOptionSel.value, vmMonedaSel.value)
+});
+
+function vmChangeInput() {
+	vmCalcValues(1, vmOptionSel.value, vmMonedaSel.value)
+}
+
 function vmCalcValues(i, o, m) {
 	if (vmCalcValidation.value) {
 		if (m == 'guarani') {		    	
@@ -232,8 +244,14 @@ function vmCalcValues(i, o, m) {
 }
 
 /* Ciudad del Este */
-cdeOptionSel.onValueChanged(module, function() {cdeCalcValues(2, cdeOptionSel.value, cdeMonedaSel.value)});
-function cdeChangeInput() {cdeCalcValues(2, cdeOptionSel.value, cdeMonedaSel.value)}
+cdeOptionSel.onValueChanged(module, function() {
+	cdeCalcValues(2, cdeOptionSel.value, cdeMonedaSel.value)
+});
+
+function cdeChangeInput() {
+	cdeCalcValues(2, cdeOptionSel.value, cdeMonedaSel.value)
+}
+
 function cdeCalcValues(i, o, m) {
 	if (cdeCalcValidation.value) {
 		if (m == 'guarani') {
@@ -309,8 +327,14 @@ function cdeCalcValues(i, o, m) {
 }
 
 /* Salto del Guaira */
-sdgOptionSel.onValueChanged(module, function() {sdgCalcValues(3, sdgOptionSel.value, sdgMonedaSel.value)});
-function sdgChangeInput() {sdgCalcValues(3, sdgOptionSel.value, sdgMonedaSel.value)}
+sdgOptionSel.onValueChanged(module, function() {
+	sdgCalcValues(3, sdgOptionSel.value, sdgMonedaSel.value)
+});
+
+function sdgChangeInput() {
+	sdgCalcValues(3, sdgOptionSel.value, sdgMonedaSel.value)
+}
+
 function sdgCalcValues(i, o, m) {
 	if (sdgCalcValidation.value) {
 		if (m == 'guarani') {
@@ -386,8 +410,14 @@ function sdgCalcValues(i, o, m) {
 }
 
 /* San Lorenzo */
-sloOptionSel.onValueChanged(module, function() {sloCalcValues(4, sloOptionSel.value, sloMonedaSel.value)});
-function sloChangeInput() {sloCalcValues(4, sloOptionSel.value, sloMonedaSel.value)}
+sloOptionSel.onValueChanged(module, function() {
+	sloCalcValues(4, sloOptionSel.value, sloMonedaSel.value)
+});
+
+function sloChangeInput() {
+	sloCalcValues(4, sloOptionSel.value, sloMonedaSel.value)
+}
+
 function sloCalcValues(i, o, m) {
 	if (sloCalcValidation.value) {
 		if (m == 'guarani') {
@@ -463,8 +493,14 @@ function sloCalcValues(i, o, m) {
 }
 
 /* Agencia Km4 CDE */
-km4OptionSel.onValueChanged(module, function() {km4CalcValues(4, km4OptionSel.value, km4MonedaSel.value)});
-function km4ChangeInput() {km4CalcValues(4, km4OptionSel.value, km4MonedaSel.value)}
+km4OptionSel.onValueChanged(module, function() {
+	km4CalcValues(5, km4OptionSel.value, km4MonedaSel.value)
+});
+
+function km4ChangeInput() {
+	km4CalcValues(5, km4OptionSel.value, km4MonedaSel.value)
+}
+
 function km4CalcValues(i, o, m) {
 	if (km4CalcValidation.value) {
 		if (m == 'guarani') {
@@ -540,8 +576,14 @@ function km4CalcValues(i, o, m) {
 }
 
 /* Encarnación */
-encOptionSel.onValueChanged(module, function() {encCalcValues(4, encOptionSel.value, encMonedaSel.value)});
-function encChangeInput() {encCalcValues(4, encOptionSel.value, encMonedaSel.value)}
+encOptionSel.onValueChanged(module, function() {
+	encCalcValues(6, encOptionSel.value, encMonedaSel.value)
+});
+
+function encChangeInput() {
+	encCalcValues(6, encOptionSel.value, encMonedaSel.value)
+}
+
 function encCalcValues(i, o, m) {
 	if (encCalcValidation.value) {
 		if (m == 'guarani') {
@@ -704,11 +746,11 @@ function initJSON(response) {
    		sloCalcValidation.value = false;
    	}
 
-	if (response.cde2) {           	
-    	for(var i=0;i<response.cde2.length;i++)
-       		response.cde2[i].img = 'Assets/'+response.cde2[i].img;
+	if (response.km4) {           	
+    	for(var i=0;i<response.km4.length;i++)
+       		response.km4[i].img = 'Assets/'+response.km4[i].img;
 	} else {
-		response.cde2 			= []; 
+		response.km4 			= []; 
 		km4CalcValidation.value = false;
 	}
 	   
