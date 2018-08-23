@@ -43,6 +43,7 @@
 		<Image File="Assets/guarani.png" Visibility="Hidden" />
 		<Image File="Assets/peso.png" Visibility="Hidden" />
 		<Image File="Assets/real.png" Visibility="Hidden" />
+		<Image File="Assets/timer.png" Visibility="Hidden" />
 	</DockPanel>
 
 	<OnBackButton>

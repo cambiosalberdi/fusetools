@@ -388,7 +388,7 @@
 									<Panel Margin="0,1,0,10" Background="#eee" Height="30">
 										<Text Value="Venta" Color="#000" Margin="8" />
 									</Panel>
-					                <Each Items="{data.cde2}">
+					                <Each Items="{data.km4}">
 					                	<Panel Margin="3">
 					                		<Image File="{img}" />				                		
 					                	</Panel>

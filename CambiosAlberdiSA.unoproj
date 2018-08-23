@@ -1,44 +1,68 @@
 {
   "Title": "Cambios Alberdi S.A.",
   "Icon" : "icon.png",
+  "Version": "7.1",
+  "RootNamespace": "$(QIdentifier)",
+  "Packages": [
+    "Fuse",
+    "Fuse.LocalNotifications",
+    "FuseJS"
+  ],
+  "Includes": [
+    "*"
+  ],
   "Android": {
-    "PreviewPackage": "com.cambiosalberdi.cambiosalberdi",
-    "VersionName": "4.0",
-    "VersionCode": 5,    
+    "ApplicationLabel": "$(Title)",
+    "Package": "com.apps.cambiosalberdisa",
+    "VersionName": "$(Version)",
+    "VersionCode": 6,    
     "Icons": {
-          "Icons": {
-            "LDPI": "$(Icon)",
-            "MDPI": "$(Icon)",
-            "HDPI": "$(Icon)",
-            "XHDPI": "$(Icon)",
-            "XXHDPI": "$(Icon)",
-            "XXXHDPI": "$(Icon)"
-        }
-      },
-      "Key": {
-            "Alias": "Imarkine",
-            "AliasPassword": "123456",
-            "Store": "release.keystore",
-            "StorePassword": "123456"
-        }
+      "Icons": {
+        "LDPI": "$(Icon)",
+        "MDPI": "$(Icon)",
+        "HDPI": "$(Icon)",
+        "XHDPI": "$(Icon)",
+        "XXHDPI": "$(Icon)",
+        "XXXHDPI": "$(Icon)"
+      }
+    },
+    "Key": {
+      "Alias": "Imarkine",
+      "AliasPassword": "123456",
+      "Store": "release.keystore",
+      "StorePassword": "123456"
+    },
+    "SDK": {
+      "BuildToolsVersion": "28.0.2",
+      "CompileVersion": 28,
+      "MinVersion": 19,
+      "TargetVersion": 28
+    }
   },
   "iOS": {
     "BundleDevelopmentTeam":"4TUFZQ77DW",
-    "BundleIdentifier": "com.cambiosalberdi.cambiosalberdi",   
-    "BundleVersion": "7.0",
+    "BundleIdentifier": "com.cambiosalberdi.cambiosalberdi",
+    "BundleName": "$(Title)",
+    "BundleVersion": "$(Version)",
     "Icons": {
+            "iPhone_20_2x": "Icon-iPhone-20@2x.png",
+            "iPhone_20_3x": "Icon-iPhone-20@3x.png",
             "iPhone_29_2x": "Icon-iPhone-29@2x.png",
             "iPhone_29_3x": "Icon-iPhone-29@3x.png",
             "iPhone_40_2x": "Icon-iPhone-40@2x.png",
             "iPhone_40_3x": "Icon-iPhone-40@3x.png",
             "iPhone_60_2x": "Icon-iPhone-60@2x.png",
             "iPhone_60_3x": "Icon-iPhone-60@3x.png",
+            "iPad_20_1x": "Icon-iPad-20@1x.png",
+            "iPad_20_2x": "Icon-iPad-20@2x.png",
             "iPad_29_1x": "Icon-iPad-29@1x.png",
             "iPad_29_2x": "Icon-iPad-29@2x.png",
             "iPad_40_1x": "Icon-iPad-40@1x.png",
             "iPad_40_2x": "Icon-iPad-40@2x.png",
             "iPad_76_1x": "Icon-iPad-76@1x.png",
-            "iPad_76_2x": "Icon-iPad-76@2x.png"
+            "iPad_76_2x": "Icon-iPad-76@2x.png",
+            "iPad_83.5_2x": "Icon-iPad-83.5@2x.png",
+            "iOS-Marketing_1024_1x": "iOS-Marketing-1024@1x.png"
         },
     "LaunchImages": {
             "iPhone_Portrait_2x": "iPhone_Portrait_2x.png",
@@ -51,15 +75,5 @@
             "iPad_Landscape_1x": "iPad_Landscape_1x.png",
             "iPad_Landscape_2x": "iPad_Landscape_2x.png"
         }
-  },
-  "RootNamespace":"",
-  "Packages": [
-    "Fuse",
-    "Fuse.LocalNotifications",
-    "FuseJS"
-  ],
-  "Includes": [
-    "*",
-    "HomeScreen.uno",
-  ]
+  }
 }
