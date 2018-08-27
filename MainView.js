@@ -87,6 +87,8 @@ function asuChangeInput() {
 }
 
 function asuCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (asuCalcValidation.value) {
 		if (m == 'guarani') {	
 			if (isNumber(asuGuarani.value)) {
@@ -106,8 +108,14 @@ function asuCalcValues(i, o, m) {
 			if (isNumber(asuDolar.value)) {
 				asuGuarani.value 	= (asuDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				asuReal.value 		= (asuDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				asuEuro.value 		= (asuDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				asuPeso.value 		= (asuDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+
+				if (o == 'compra') {
+					asuEuro.value 		= (asuDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					asuEuro.value 		= (asuDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				asuPeso.value 		= (asuDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				asuGuarani.value 	= '';
 				asuReal.value 		= '';
@@ -119,7 +127,13 @@ function asuCalcValues(i, o, m) {
 		if (m == 'real') {	  
 			if (isNumber(asuReal.value)) {
 				asuGuarani.value 	= (asuReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				asuDolar.value 		= (asuReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+
+				if (o == 'compra') {
+					asuDolar.value 		= (asuReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					asuDolar.value 		= (asuReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+
 				asuEuro.value 		= '';
 				asuPeso.value 		= '';
 			} else {
@@ -133,7 +147,7 @@ function asuCalcValues(i, o, m) {
 		if (m == 'euro') {	
 			if (isNumber(asuEuro.value)) {
 				asuGuarani.value 	= (asuEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				asuDolar.value 		= (asuEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				asuDolar.value 		= (asuEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				asuReal.value 		= '';
 				asuPeso.value 		= '';
 			} else {
@@ -147,7 +161,13 @@ function asuCalcValues(i, o, m) {
 		if (m == 'peso') {	
 			if (isNumber(asuPeso.value)) { 
 				asuGuarani.value 	= (asuPeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				asuDolar.value 		= (asuPeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+
+				if (o == 'compra') {
+					asuDolar.value 		= (asuPeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					asuDolar.value 		= (asuPeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+
 				asuReal.value 		= '';
 				asuEuro.value 		= '';
 			} else {
@@ -170,6 +190,8 @@ function vmChangeInput() {
 }
 
 function vmCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (vmCalcValidation.value) {
 		if (m == 'guarani') {		    	
 			if (isNumber(vmGuarani.value)) {
@@ -189,8 +211,14 @@ function vmCalcValues(i, o, m) {
 			if (isNumber(vmDolar.value)) {
 				vmGuarani.value 	= (vmDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				vmReal.value 		= (vmDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				vmEuro.value 		= (vmDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				vmPeso.value 		= (vmDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					vmEuro.value 		= (vmDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					vmEuro.value 		= (vmDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				vmPeso.value 		= (vmDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				vmGuarani.value 	= '';
 				vmReal.value 		= '';
@@ -202,7 +230,13 @@ function vmCalcValues(i, o, m) {
 		if (m == 'real') {	
 			if (isNumber(vmReal.value)) {
 				vmGuarani.value 	= (vmReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				vmDolar.value 		= (vmReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					vmDolar.value 		= (vmReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					vmDolar.value 		= (vmReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				vmEuro.value 		= '';
 				vmPeso.value 		= '';
 			} else {
@@ -216,7 +250,7 @@ function vmCalcValues(i, o, m) {
 		if (m == 'euro') {	
 			if (isNumber(vmEuro.value)) {
 				vmGuarani.value 	= (vmEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				vmDolar.value 		= (vmEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				vmDolar.value 		= (vmEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				vmReal.value 		= '';
 				vmPeso.value 		= '';
 			} else {
@@ -230,7 +264,13 @@ function vmCalcValues(i, o, m) {
 		if (m == 'peso') {	  
 			if (isNumber(vmPeso.value)) {
 				vmGuarani.value 	= (vmPeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				vmDolar.value 		= (vmPeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					vmDolar.value 		= (vmPeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					vmDolar.value 		= (vmPeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				vmReal.value 		= '';
 				vmEuro.value 		= '';
 			} else {
@@ -253,6 +293,8 @@ function cdeChangeInput() {
 }
 
 function cdeCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (cdeCalcValidation.value) {
 		if (m == 'guarani') {
 			if (isNumber(cdeGuarani.value)) {
@@ -272,8 +314,14 @@ function cdeCalcValues(i, o, m) {
 			if (isNumber(cdeDolar.value)) {
 				cdeGuarani.value 	= (cdeDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				cdeReal.value 		= (cdeDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				cdeEuro.value 		= (cdeDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				cdePeso.value 		= (cdeDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					cdeEuro.value 		= (cdeDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					cdeEuro.value 		= (cdeDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				cdePeso.value 		= (cdeDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				cdeGuarani.value 	= '';
 				cdeReal.value 		= '';
@@ -285,7 +333,13 @@ function cdeCalcValues(i, o, m) {
 		if (m == 'real') {	 
 			if (isNumber(cdeReal.value)) {
 				cdeGuarani.value 	= (cdeReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				cdeDolar.value 		= (cdeReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					cdeDolar.value 		= (cdeReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					cdeDolar.value 		= (cdeReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				cdeEuro.value 		= '';
 				cdePeso.value 		= '';
 			} else {
@@ -299,7 +353,7 @@ function cdeCalcValues(i, o, m) {
 		if (m == 'euro') {	
 			if (isNumber(cdeEuro.value)) {
 				cdeGuarani.value 	= (cdeEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				cdeDolar.value 		= (cdeEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				cdeDolar.value 		= (cdeEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				cdeReal.value 		= '';
 				cdePeso.value 		= '';
 			} else {
@@ -313,7 +367,13 @@ function cdeCalcValues(i, o, m) {
 		if (m == 'peso') {	
 			if (isNumber(cdePeso.value)) {
 				cdeGuarani.value 	= (cdePeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				cdeDolar.value 		= (cdePeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					cdeDolar.value 		= (cdePeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					cdeDolar.value 		= (cdePeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				cdeReal.value 		= '';
 				cdeEuro.value 		= '';
 			} else {
@@ -336,6 +396,8 @@ function sdgChangeInput() {
 }
 
 function sdgCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (sdgCalcValidation.value) {
 		if (m == 'guarani') {
 			if (isNumber(sdgGuarani.value)) {
@@ -355,8 +417,14 @@ function sdgCalcValues(i, o, m) {
 			if (isNumber(sdgDolar.value)) {
 				sdgGuarani.value 	= (sdgDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				sdgReal.value 		= (sdgDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				sdgEuro.value 		= (sdgDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				sdgPeso.value 		= (sdgDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sdgEuro.value 		= (sdgDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sdgEuro.value 		= (sdgDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				sdgPeso.value 		= (sdgDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				sdgGuarani.value 	= '';
 				sdgReal.value 		= '';
@@ -368,7 +436,13 @@ function sdgCalcValues(i, o, m) {
 		if (m == 'real') {
 			if (isNumber(sdgReal.value)) {
 				sdgGuarani.value 	= (sdgReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				sdgDolar.value 		= (sdgReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sdgDolar.value 		= (sdgReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sdgDolar.value 		= (sdgReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				sdgEuro.value 		= '';
 				sdgPeso.value 		= '';
 			} else {
@@ -382,7 +456,7 @@ function sdgCalcValues(i, o, m) {
 		if (m == 'euro') {
 			if (isNumber(sdgEuro.value)) {
 				sdgGuarani.value 	= (sdgEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				sdgDolar.value 		= (sdgEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				sdgDolar.value 		= (sdgEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				sdgReal.value 		= '';
 				sdgPeso.value 		= '';
 			} else {
@@ -396,7 +470,13 @@ function sdgCalcValues(i, o, m) {
 		if (m == 'peso') {	   
 			if (isNumber(sdgPeso.value)) {
 				sdgGuarani.value 	= (sdgPeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				sdgDolar.value 		= (sdgPeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sdgDolar.value 		= (sdgPeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sdgDolar.value 		= (sdgPeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				sdgReal.value 		= '';
 				sdgEuro.value 		= '';
 			} else {
@@ -419,6 +499,8 @@ function sloChangeInput() {
 }
 
 function sloCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (sloCalcValidation.value) {
 		if (m == 'guarani') {
 			if (isNumber(sloGuarani.value)) {
@@ -438,8 +520,14 @@ function sloCalcValues(i, o, m) {
 			if (isNumber(sloDolar.value)) {
 				sloGuarani.value 	= (sloDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				sloReal.value 		= (sloDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				sloEuro.value 		= (sloDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				sloPeso.value 		= (sloDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sloEuro.value 		= (sloDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sloEuro.value 		= (sloDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				sloPeso.value 		= (sloDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				sloGuarani.value 	= '';
 				sloReal.value 		= '';
@@ -451,7 +539,13 @@ function sloCalcValues(i, o, m) {
 		if (m == 'real') {
 			if (isNumber(sloReal.value)) {
 				sloGuarani.value 	= (sloReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				sloDolar.value 		= (sloReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sloDolar.value 		= (sloReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sloDolar.value 		= (sloReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				sloEuro.value 		= '';
 				sloPeso.value 		= '';
 			} else {
@@ -465,7 +559,7 @@ function sloCalcValues(i, o, m) {
 		if (m == 'euro') {
 			if (isNumber(sloEuro.value)) {
 				sloGuarani.value 	= (sloEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				sloDolar.value 		= (sloEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				sloDolar.value 		= (sloEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				sloReal.value 		= '';
 				sloPeso.value 		= '';
 			} else {
@@ -479,7 +573,13 @@ function sloCalcValues(i, o, m) {
 		if (m == 'peso') {
 			if (isNumber(sloPeso.value)) {
 				sloGuarani.value 	= (sloPeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				sloDolar.value 		= (sloPeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					sloDolar.value 		= (sloPeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					sloDolar.value 		= (sloPeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				sloReal.value 		= '';
 				sloEuro.value 		= '';
 			} else {
@@ -502,6 +602,8 @@ function km4ChangeInput() {
 }
 
 function km4CalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (km4CalcValidation.value) {
 		if (m == 'guarani') {
 			if (isNumber(km4Guarani.value)) {
@@ -521,8 +623,14 @@ function km4CalcValues(i, o, m) {
 			if (isNumber(km4Dolar.value)) {
 				km4Guarani.value 	= (km4Dolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				km4Real.value 		= (km4Dolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				km4Euro.value 		= (km4Dolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				km4Peso.value 		= (km4Dolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					km4Euro.value 		= (km4Dolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					km4Euro.value 		= (km4Dolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				km4Peso.value 		= (km4Dolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				km4Guarani.value 	= '';
 				km4Real.value 		= '';
@@ -534,7 +642,13 @@ function km4CalcValues(i, o, m) {
 		if (m == 'real') {
 			if (isNumber(km4Real.value)) {
 				km4Guarani.value 	= (km4Real.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				km4Dolar.value 		= (km4Real.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					km4Dolar.value 		= (km4Real.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					km4Dolar.value 		= (km4Real.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				km4Euro.value 		= '';
 				km4Peso.value 		= '';
 			} else {
@@ -548,7 +662,7 @@ function km4CalcValues(i, o, m) {
 		if (m == 'euro') {
 			if (isNumber(km4Euro.value)) {
 				km4Guarani.value 	= (km4Euro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				km4Dolar.value 		= (km4Euro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				km4Dolar.value 		= (km4Euro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				km4Real.value 		= '';
 				km4Peso.value 		= '';
 			} else {
@@ -562,7 +676,13 @@ function km4CalcValues(i, o, m) {
 		if (m == 'peso') {
 			if (isNumber(km4Peso.value)) {
 				km4Guarani.value 	= (km4Peso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				km4Dolar.value 		= (km4Peso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					km4Dolar.value 		= (km4Peso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					km4Dolar.value 		= (km4Peso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				km4Real.value 		= '';
 				km4Euro.value 		= '';
 			} else {
@@ -585,6 +705,8 @@ function encChangeInput() {
 }
 
 function encCalcValues(i, o, m) {
+	o = calcOperacion(o, m);
+	
 	if (encCalcValidation.value) {
 		if (m == 'guarani') {
 			if (isNumber(encGuarani.value)) {
@@ -604,8 +726,14 @@ function encCalcValues(i, o, m) {
 			if (isNumber(encDolar.value)) {
 				encGuarani.value 	= (encDolar.value*getReal(arr[i][0][o])).formatMoney(2, ',', '.');
 				encReal.value 		= (encDolar.value*getReal(arr[i][4][o])).formatMoney(2, ',', '.');
-				encEuro.value 		= (encDolar.value/getReal(arr[i][6][o])).formatMoney(2, ',', '.');
-				encPeso.value 		= (encDolar.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					encEuro.value 		= (encDolar.value/getReal(arr[i][5]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					encEuro.value 		= (encDolar.value/getReal(arr[i][5]['compra'])).formatMoney(2, ',', '.');
+				}
+				
+				encPeso.value 		= (encDolar.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
 			} else {
 				encGuarani.value 	= '';
 				encReal.value 		= '';
@@ -617,7 +745,13 @@ function encCalcValues(i, o, m) {
 		if (m == 'real') {
 			if (isNumber(encReal.value)) {
 				encGuarani.value 	= (encReal.value*getReal(arr[i][1][o])).formatMoney(2, ',', '.');
-				encDolar.value 		= (encReal.value/getReal(arr[i][4][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					encDolar.value 		= (encReal.value/getReal(arr[i][4]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					encDolar.value 		= (encReal.value/getReal(arr[i][4]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				encEuro.value 		= '';
 				encPeso.value 		= '';
 			} else {
@@ -631,7 +765,7 @@ function encCalcValues(i, o, m) {
 		if (m == 'euro') {
 			if (isNumber(encEuro.value)) {
 				encGuarani.value 	= (encEuro.value*getReal(arr[i][2][o])).formatMoney(2, ',', '.');
-				encDolar.value 		= (encEuro.value*getReal(arr[i][6][o])).formatMoney(2, ',', '.');
+				encDolar.value 		= (encEuro.value*getReal(arr[i][5][o])).formatMoney(2, ',', '.');
 				encReal.value 		= '';
 				encPeso.value 		= '';
 			} else {
@@ -645,7 +779,13 @@ function encCalcValues(i, o, m) {
 		if (m == 'peso') {
 			if (isNumber(encPeso.value)) {
 				encGuarani.value 	= (encPeso.value*getReal(arr[i][3][o])).formatMoney(2, ',', '.');
-				encDolar.value 		= (encPeso.value/getReal(arr[i][5][o])).formatMoney(2, ',', '.');
+				
+				if (o == 'compra') {
+					encDolar.value 		= (encPeso.value/getReal(arr[i][6]['venta'])).formatMoney(2, ',', '.');
+				} else {
+					encDolar.value 		= (encPeso.value/getReal(arr[i][6]['compra'])).formatMoney(2, ',', '.');
+				}
+				
 				encReal.value 		= '';
 				encEuro.value 		= '';
 			} else {
@@ -862,6 +1002,20 @@ function getReal(value) {
     var res = value.replace('.', '');
     res 	= res.replace(',', '.');
     return parseFloat(res);
+}
+
+function calcOperacion(ope, mon) {
+	var auxOpe = ope;
+	
+	if (mon == 'guarani' && ope == 'compra') {
+		auxOpe = 'venta';
+	}
+	
+	if (mon == 'guarani' && ope == 'venta') {
+		auxOpe = 'compra';
+	}
+	
+	return auxOpe; 
 }
 
 Number.prototype.formatMoney = function(c, d, t){

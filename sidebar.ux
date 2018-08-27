@@ -41,7 +41,7 @@
 			<Rectangle Fill="#FFF" Height="1px" SnapToPixels="true" Margin="0,44,0,0"/>
 		</Panel>
 
-		<Panel Height="0" Clicked="{calcPage}" Visibility="Hidden">
+		<Panel Height="40" Clicked="{calcPage}">
 			<Clicked>
 				<NavigateToggle Target="sidebar" />
 			</Clicked>
