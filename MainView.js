@@ -832,7 +832,7 @@ function loadJSON() {
 	  headers: myHeaders,
 	};
 
-	fetch('http://cambiosalberdi.com/ws/getCotizaciones.json', myInit)
+	fetch('https://cambiosalberdi.com/ws/getCotizaciones.json', myInit)
     .then(function(responsef) { 
 		return responsef.json(); 
     })

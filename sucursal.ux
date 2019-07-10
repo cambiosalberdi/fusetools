@@ -1,5 +1,5 @@
 <Panel ux:Class="sucursal">	
 	<NativeViewHost>
-		<WebView Dock="Fill" Url="http://www.cambiosalberdi.com/msucursales.php"></WebView>
+		<WebView Dock="Fill" Url="https://cambiosalberdi.com/msucursales.php"></WebView>
 	</NativeViewHost>
 </Panel>

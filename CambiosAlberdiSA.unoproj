@@ -1,7 +1,7 @@
 {
   "Title": "Cambios Alberdi S.A.",
   "Icon" : "icon.png",
-  "Version": "7.2",
+  "Version": "7.3",
   "RootNamespace": "$(QIdentifier)",
   "Packages": [
     "Fuse",
@@ -15,7 +15,7 @@
     "ApplicationLabel": "$(Title)",
     "Package": "com.apps.cambiosalberdisa",
     "VersionName": "$(Version)",
-    "VersionCode": 7,
+    "VersionCode": 8,
     "Icons": {
       "Icons": {
         "LDPI": "$(Icon)",
